@@ -1,0 +1,26 @@
+{"datetime": "2022-12-07T18:46:20.761967Z", "matchtime": 0, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2022-12-07T18:46:20.773962Z", "matchtime": 0, "event": "MATCH_START", "payload": {"score_yellow": 0, "score_blue": 0, "total_match_time": 600, "team_name_yellow": "The Yellows", "team_name_blue": "The Blues", "match_id": "1", "halftime": 1}}
+{"datetime": "2022-12-07T18:46:36.671667Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-07T18:46:36.675574Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2022-12-07T18:46:40.820105Z", "matchtime": 19.00800000002323, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y3"}}
+{"datetime": "2022-12-07T18:46:41.398355Z", "matchtime": 19.552000000023895, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2022-12-07T18:46:42.107469Z", "matchtime": 20.224000000024716, "event": "GOAL", "payload": {"team_name": "The Blues", "score_yellow": 0, "score_blue": 1}}
+{"datetime": "2022-12-07T18:46:45.329974Z", "matchtime": 23.232000000028393, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2022-12-07T18:47:01.171779Z", "matchtime": 38.27200000004677, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2022-12-07T18:47:01.172776Z", "matchtime": 38.27200000004677, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-07T18:47:05.246018Z", "matchtime": 42.11200000005147, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-07T18:47:11.127859Z", "matchtime": 47.77600000005839, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2022-12-07T18:47:16.960509Z", "matchtime": 53.312000000065154, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2022-12-07T18:47:16.961758Z", "matchtime": 53.312000000065154, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-07T18:47:20.942539Z", "matchtime": 57.15200000006985, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-07T18:47:26.842725Z", "matchtime": 62.81600000007677, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2022-12-07T18:47:31.013357Z", "matchtime": 66.78400000008162, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2022-12-07T18:47:32.639602Z", "matchtime": 68.35200000008354, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2022-12-07T18:47:36.635438Z", "matchtime": 72.19200000008823, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-07T18:47:41.731043Z", "matchtime": 76.9920000000941, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-07T18:47:42.700531Z", "matchtime": 77.92000000009523, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2022-12-07T18:47:44.691979Z", "matchtime": 79.80800000009754, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y3"}}
+{"datetime": "2022-12-07T18:47:48.521266Z", "matchtime": 83.456000000102, "event": "GOAL", "payload": {"team_name": "The Blues", "score_yellow": 0, "score_blue": 2}}
+{"datetime": "2022-12-07T18:47:51.612425Z", "matchtime": 86.46400000010567, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2022-12-07T18:47:58.248002Z", "matchtime": 92.6720000001049, "event": "GOAL", "payload": {"team_name": "The Yellows", "score_yellow": 1, "score_blue": 2}}
+{"datetime": "2022-12-07T18:48:01.430056Z", "matchtime": 95.68000000010323, "event": "KICKOFF", "payload": {"robot_name": "B3", "team_name": "B"}}

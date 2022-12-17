@@ -13,8 +13,8 @@ WorldInfo {
   optimalThreadCount 8
 }
 Viewpoint {
-  orientation -0.22009395259595416 0.7563205152048503 0.6160664982864752 0.8825869690923828
-  position -8.306865832561803 -5.047271972833229 7.11142668222598
+  orientation 0.2839662019536889 0.11765354643608891 -0.9515885871315439 2.390488333414046
+  position 5.769258756895706 5.261500229470569 4.189613068896204
 }
 TexturedBackground {
 }
@@ -441,7 +441,7 @@ DEF BALL Robot {
     1 1 1
     0 0 0
   ]
-  controller "rcj_soccer_ball"
+  controller "rsg_soccer_ball"
   synchronization FALSE
 }
 Robot {
@@ -455,16 +455,18 @@ Robot {
       ]
     }
   ]
-  controller "rcj_soccer_referee_supervisor"
+  controller "sumo_supervisor"
   supervisor TRUE
 }
 DEF B1 Nao {
-  translation -0.76943 -0.0497692 0.334
-  rotation -0.788626952085788 -5.672079655384303e-09 -0.6148719626425327 -5.307179586466759e-06
+  translation -1.34943 -1.77977 0.334
+  rotation 2.092689999990835e-06 -2.092689999990835e-06 0.9999999999956206 1.5708
+  name "B1"
   version "V4 (blue)"
   customColor [
     0.333333 0 1
   ]
+  controller "rsg_team_blue"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
@@ -473,61 +475,277 @@ DEF B1 Nao {
     ]
     jerseyColor 0.333333 0.333333 1
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF B2 Nao {
-  translation 0.460565 -0.0197708 0.334
-  rotation -4.986549999986273e-13 -2.3463699999935415e-06 0.9999999999972473 -3.1415853071795863
-  name "NAO(1)"
+  translation -0.0394293 -2.81977 0.334
+  rotation 2.092689999990835e-06 -2.092689999990835e-06 0.9999999999956206 1.5708
+  name "B2"
   version "V4 (blue)"
   customColor [
     0.333333 0 1
   ]
+  controller "rsg_team_blue"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
     jerseyTexture [
       "soccer/blue.png"
     ]
-    jerseyColor 0.333333 0.666667 1
+    jerseyColor 0.333333 0.333333 1
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF B3 Nao {
-  translation -0.0094322 -2.89977 0.344
-  rotation 2.3463699999870824e-06 -2.3463699999870824e-06 0.9999999999944946 1.5708
-  name "NAO(2)"
+  translation -0.0394297 -0.909766 0.334
+  rotation 2.092689999990835e-06 -2.092689999990835e-06 0.9999999999956206 1.5708
+  name "B3"
   version "V4 (blue)"
   customColor [
     0.333333 0 1
   ]
+  controller "rsg_team_blue"
+  cameraWidth 1
+  cameraHeight 1
   jersey NaoJersey {
     jerseyTexture [
       "soccer/blue.png"
     ]
-    jerseyColor 0.333333 0.666667 1
+    jerseyColor 0.333333 0.333333 1
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF B4 Nao {
-  translation -0.0594307 -1.44977 0.334
-  rotation 2.3463699999870824e-06 -2.3463699999870824e-06 0.9999999999944946 1.5708
-  name "NAO(3)"
+  translation 1.40057 -1.77976 0.334
+  rotation -2.092679999990836e-06 2.092679999990836e-06 -0.9999999999956208 -1.5708053071795867
+  name "B4"
   version "V4 (blue)"
   customColor [
     0.333333 0 1
   ]
+  controller "rsg_team_blue"
+  cameraWidth 1
+  cameraHeight 1
   jersey NaoJersey {
     jerseyTexture [
       "soccer/blue.png"
     ]
-    jerseyColor 0.333333 0.666667 1
+    jerseyColor 0.333333 0.333333 1
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF R1 Nao {
-  translation -0.0194349 0.92023 0.344005
+  translation -1.37943 1.80023 0.334005
   rotation 2.346369999986976e-06 2.36554999998687e-06 -0.9999999999944493 1.5708
-  name "NAO(4)"
+  name "R1"
   customColor [
     1 0 0
   ]
+  controller "rsg_team_red"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
@@ -536,14 +754,67 @@ DEF R1 Nao {
     ]
     jerseyColor 1 0 0
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF R2 Nao {
-  translation 0.020565 2.80023 0.354005
+  translation 0.0805704 2.83023 0.334005
   rotation 2.346369999986976e-06 2.36554999998687e-06 -0.9999999999944493 1.5708
-  name "NAO(5)"
+  name "R2"
   customColor [
     1 0 0
   ]
+  controller "rsg_team_red"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
@@ -552,14 +823,67 @@ DEF R2 Nao {
     ]
     jerseyColor 1 0 0
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF R3 Nao {
-  translation -1.53943 1.46023 0.354005
+  translation 1.40057 1.68023 0.334005
   rotation 2.346369999986976e-06 2.36554999998687e-06 -0.9999999999944493 1.5708
-  name "NAO(6)"
+  name "R3"
   customColor [
     1 0 0
   ]
+  controller "rsg_team_red"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
@@ -568,14 +892,67 @@ DEF R3 Nao {
     ]
     jerseyColor 1 0 0
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
 DEF R4 Nao {
-  translation 1.29056 1.88023 0.344005
+  translation 0.0005694 0.93023 0.334005
   rotation 2.346369999986976e-06 2.36554999998687e-06 -0.9999999999944493 1.5708
-  name "NAO(7)"
+  name "R4"
   customColor [
     1 0 0
   ]
+  controller "rsg_team_red"
   cameraWidth 1
   cameraHeight 1
   jersey NaoJersey {
@@ -584,4 +961,56 @@ DEF R4 Nao {
     ]
     jerseyColor 1 0 0
   }
+  bodySlot [
+    DistanceSensor {
+      translation 0.04 0 0
+      name "distance sensor front"
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      name "distance sensor back"
+    }
+    DistanceSensor {
+      translation 0 0.04 0
+      name "distance sensor left"
+    }
+    DistanceSensor {
+      translation 0 -0.04 0
+      name "distance sensor right"
+    }
+  ]
+  headSlot [
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
 }
