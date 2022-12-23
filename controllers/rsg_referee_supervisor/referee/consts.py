@@ -70,9 +70,11 @@ KICKOFF_TRANSLATION = {
     Team.YELLOW.value: YELLOW_KICKOFF_TRANSLATION,
 }
 
+
 # (vertical boundary y, lower boundary x, upper boundary x)
-YELLOW_PENALTY_AREA = (-0.59, -0.35, 0.35)
-BLUE_PENALTY_AREA = (0.59, -0.35, 0.35)
+# field was scaled 4 times
+YELLOW_PENALTY_AREA = (-0.59*4, -0.35*4, 0.35*4)
+BLUE_PENALTY_AREA = (0.59*4, -0.35*4, 0.35*4)
 
 MAX_EVENT_MESSAGES_IN_QUEUE = 10
 
