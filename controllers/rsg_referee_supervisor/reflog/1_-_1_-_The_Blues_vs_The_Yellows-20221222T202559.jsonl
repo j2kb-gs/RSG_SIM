@@ -1,0 +1,26 @@
+{"datetime": "2022-12-22T20:26:00.005831Z", "matchtime": 0, "event": "KICKOFF", "payload": {"robot_name": "B3", "team_name": "B"}}
+{"datetime": "2022-12-22T20:26:00.156959Z", "matchtime": 0, "event": "MATCH_START", "payload": {"score_yellow": 0, "score_blue": 0, "total_match_time": 600, "team_name_yellow": "The Yellows", "team_name_blue": "The Blues", "match_id": "1", "halftime": 1}}
+{"datetime": "2022-12-22T20:26:00.158634Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-22T20:26:00.160628Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2022-12-22T20:26:00.161626Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B4"}}
+{"datetime": "2022-12-22T20:26:00.163620Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-22T20:26:00.164618Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2022-12-22T20:26:00.166613Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y3"}}
+{"datetime": "2022-12-22T20:26:00.168607Z", "matchtime": 0.03200000000003911, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.297756Z", "matchtime": 0.06400000000007822, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.442802Z", "matchtime": 0.09600000000011732, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.577036Z", "matchtime": 0.12800000000015643, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.728875Z", "matchtime": 0.16000000000019554, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.822404Z", "matchtime": 0.19200000000023465, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:00.926851Z", "matchtime": 0.22400000000027376, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:01.031294Z", "matchtime": 0.25600000000031287, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:26:02.890865Z", "matchtime": 0.7040000000008604, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-22T20:26:06.704687Z", "matchtime": 1.4400000000017599, "event": "GOAL", "payload": {"team_name": "The Blues", "score_yellow": 0, "score_blue": 1}}
+{"datetime": "2022-12-22T20:26:29.650492Z", "matchtime": 4.448000000005436, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2022-12-22T20:26:29.684128Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2022-12-22T20:26:29.685125Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2022-12-22T20:26:29.687156Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B4"}}
+{"datetime": "2022-12-22T20:26:29.688116Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2022-12-22T20:26:29.690110Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2022-12-22T20:26:29.691108Z", "matchtime": 4.480000000005475, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y4"}}
+{"datetime": "2022-12-22T20:27:31.936614Z", "matchtime": 14.496000000017716, "event": "LACK_OF_PROGRESS", "payload": {"type": "ball"}}
