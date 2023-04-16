@@ -3,32 +3,11 @@ import struct
 from controller import Motion
 
 TIME_STEP = 32
-ROBOT_NAMES = ["B1", "B2", "B3", "B4", "Y1", "Y2", "Y3", "Y4"]
+ROBOT_NAMES = ["B1", "B2", "B3", "Y1", "Y2", "Y3"]
 N_ROBOTS = len(ROBOT_NAMES)
 
 
 class RSGPlayerRobot:
-    # load motion files
-    def loadMotionFiles(self):
-        self.handWave = Motion('../../motions/HandWave.motion')
-        self.forwards = Motion('../../motions/Forwards50.motion')
-        self.backwards = Motion('../../motions/Backwards.motion')
-        self.sideStepLeft = Motion('../../motions/SideStepLeft.motion')
-        self.sideStepRight = Motion('../../motions/SideStepRight.motion')
-        self.turnLeft60 = Motion('../../motions/TurnLeft60.motion')
-        self.turnRight60 = Motion('../../motions/TurnRight60.motion')
-        self.taiChi = Motion('../../motions/TaiChi.motion')
-        self.wipeForhead = Motion('../../motions/WipeForehead.motion')
-
-    def startMotion(self, motion):
-        # interrupt current motion
-        if self.currentlyPlaying:
-            self.currentlyPlaying.stop()
-
-        # start new motion
-        motion.play()
-        self.currentlyPlaying = motion
-
     def __init__(self, robot):
         self.robot = robot
         self.name = self.robot.getName()
@@ -51,25 +30,23 @@ class RSGPlayerRobot:
         self.compass = self.robot.getDevice("compass")
         self.compass.enable(TIME_STEP)
 
-        self.sonar_left = self.robot.getDevice("distance sensor left")
+        self.sonar_left = self.robot.getDevice("distancesensor left")
         self.sonar_left.enable(TIME_STEP)
-        self.sonar_right = self.robot.getDevice("distance sensor right")
+        self.sonar_right = self.robot.getDevice("distancesensor right")
         self.sonar_right.enable(TIME_STEP)
-        self.sonar_front = self.robot.getDevice("distance sensor front")
+        self.sonar_front = self.robot.getDevice("distancesensor front")
         self.sonar_front.enable(TIME_STEP)
-        self.sonar_back = self.robot.getDevice("distance sensor back")
+        self.sonar_back = self.robot.getDevice("distancesensor back")
         self.sonar_back.enable(TIME_STEP)
 
-        # self.left_foot = self.robot.getDevice("left foot slot")
-        # self.right_foot = self.robot.getDevice("right foot slot")
+        self.left_motor = self.robot.getDevice("left wheel motor")
+        self.right_motor = self.robot.getDevice("right wheel motor")
 
-        # self.left_foot.setPosition(float("+inf"))
-        # self.right_foot.setPosition(float("+inf"))
+        self.left_motor.setPosition(float("+inf"))
+        self.right_motor.setPosition(float("+inf"))
 
-        # self.left_foot.setVelocity(0.0)
-        # self.right_foot.setPosition(0.0)
-        self.loadMotionFiles()
-        self.currentlyPlaying = self.handWave
+        self.left_motor.setVelocity(0.0)
+        self.right_motor.setVelocity(0.0)
 
     def parse_supervisor_msg(self, packet: str) -> dict:
         """Parse message received from supervisor

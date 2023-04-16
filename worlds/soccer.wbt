@@ -1,27 +1,20 @@
-#VRML_SIM R2022b utf8
-
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/softbank/nao/protos/Nao.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/robots/softbank/nao/protos/NaoJersey.proto"
-
+#VRML_SIM R2022a utf8
 WorldInfo {
   info [
-    "A simple Robot Soccer Game simulated using Webots."
+    "A simple RCJ Soccer game simulated using Webots."
   ]
-  title "Robot Soccer Game sim"
+  title "RCJ Soccer Sim"
   optimalThreadCount 8
 }
 Viewpoint {
-  orientation 0.26982571032857766 0.09081710798961838 -0.9586168885128619 2.517385810921592
-  position 10.384980951608483 8.401986755045083 8.277587016660382
+  orientation -0.33248773607150905 -0.1282006628969766 0.9343535173556196 3.8331785372585268
+  position 2.8101623148813997 2.6812533353068706 3.0247230870497597
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 DEF SOCCER_FIELD Solid {
-  scale 4 4 4
   children [
     DEF GROUND Transform {
       rotation 0 0 1 1.5707996938995747
@@ -395,9 +388,8 @@ DEF SOCCER_FIELD Solid {
   locked TRUE
 }
 DEF BALL Robot {
-  translation -0.00881831 -0.0236535 0.0661053
-  rotation -0.054834584167005235 0.21264493860067968 0.9755897183072119 0.334595
-  scale 3 3 3
+  translation -0.00878554 0.0770576 0.02092047393473981
+  rotation 0.707106781186547 0.707106781186548 0 -2.623179999999999
   children [
     DEF FOOTBALL_SHAPE Shape {
       appearance PBRAppearance {
@@ -444,6 +436,1566 @@ DEF BALL Robot {
   controller "rsg_soccer_ball"
   synchronization FALSE
 }
+DEF B1 Robot {
+  translation 0.36943748828033174 0.4089929644898342 0.037514999050528394
+  rotation 0.00021440291650158026 0.0002076705023528394 -0.9999999554521749 1.6026953522569434
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.713118237064809e-09
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.045 -0.0176
+        rotation 2.938475997511402e-11 2.9117301253933925e-11 1 1.570800000000007
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.686993924891288e-09
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.045 -0.0176
+        rotation 2.994989242779519e-11 2.967987116175729e-11 1 1.570799693899582
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF BLUE_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/blue_c3.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5707903061004251
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 2
+      baudRate 115200
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "B1"
+  boundingObject USE BLUE_ROBOT_SHAPE
+  physics DEF ROBOT_PHYSICS Physics {
+    density -1
+    mass 0.2
+  }
+  controller "rsg_team_blue"
+  synchronization FALSE
+}
+DEF B2 Robot {
+  translation -0.2276803180957027 0.452886038838414 0.037514999050535486
+  rotation 0.0002144029142054696 0.00023757127757896945 -0.999999948795638 1.4683653579189133
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.718420010411876e-09
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.045 -0.0176
+        rotation 2.6560228780052012e-11 2.664007139145965e-11 1 1.570799999999998
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.693813653231027e-09
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.045 -0.0176
+        rotation 2.63643504703747e-11 2.6445699040751097e-11 1 1.570799693899573
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF BLUE_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/blue_c3.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5707903061004251
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 2
+      baudRate 115200
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "B2"
+  boundingObject USE BLUE_ROBOT_SHAPE
+  physics USE ROBOT_PHYSICS
+  controller "rsg_team_blue"
+  synchronization FALSE
+}
+DEF B3 Robot {
+  translation 0.06463673612389213 0.4312488860195625 0.03751499905060151
+  rotation 0.00021440284555479031 0.00022290660892378673 -0.9999999521720306 1.5319100513663757
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.772935684671745e-09
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.045 -0.0176
+        rotation -4.627246429606104e-13 -7.871354777761994e-13 1 1.5707999999999962
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -7.747630985348137e-09
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.045 -0.0176
+        rotation -3.1682095048565246e-13 -6.285685153142202e-13 1 1.5707996938995714
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF BLUE_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/blue_c3.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5707903061004251
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 2
+      baudRate 115200
+      allowedChannels [
+        2
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "B3"
+  boundingObject USE BLUE_ROBOT_SHAPE
+  physics USE ROBOT_PHYSICS
+  controller "rsg_team_blue"
+  synchronization FALSE
+}
+DEF Y1 Robot {
+  translation -0.27438302452053165 -0.35934294898697405 0.03751499905052521
+  rotation -0.0002144029154569963 0.00021457373184386944 0.9999999539947506 1.570000046000823
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 5.62479804276577e-11
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.04499999999999993 -0.0176
+        rotation -5.557574800223677e-10 5.557554386149054e-10 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 5.606007742717592e-11
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 2.220446049250313e-16 0.044999999999999984 -0.0176
+        rotation -5.526332788296617e-10 5.526312488980106e-10 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF YELLOW_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/yellow_c2.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 3
+      baudRate 115200
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "Y1"
+  boundingObject USE YELLOW_ROBOT_SHAPE
+  physics USE ROBOT_PHYSICS
+  controller "rsg_team_yellow"
+  synchronization FALSE
+}
+DEF Y2 Robot {
+  translation 0.3350619953475242 -0.3462529806693451 0.03751499905052872
+  rotation -0.0002144029144944292 0.0002275610602688379 0.9999999511236758 1.5112700487553037
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 5.98036118484909e-11
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 5.551115123125783e-17 -0.04499999999999993 -0.0176
+        rotation -5.812166889066264e-10 5.812145539824399e-10 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 5.995570655309961e-11
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 4.440892098500626e-16 0.04500000000000004 -0.0176
+        rotation -5.833682093348937e-10 5.833660665077455e-10 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF YELLOW_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/yellow_c2.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 3
+      baudRate 115200
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "Y2"
+  boundingObject USE YELLOW_ROBOT_SHAPE
+  physics USE ROBOT_PHYSICS
+  controller "rsg_team_yellow"
+  synchronization FALSE
+}
+DEF Y3 Robot {
+  translation -0.012301637588428945 -0.3683931228650428 0.03751499905034388
+  rotation 0.0002144026938419463 -0.00021237683964616847 0.9999999544637804 1.5802900444142252
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -5.65911203377099e-12
+        axis 0 1 0
+        anchor 0 -0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 5.551115123125783e-17 -0.045 -0.0176
+        rotation 7.272773643605522e-11 -7.272746929265314e-11 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              DEF WHEEL_SHAPE Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "right wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            USE WHEEL_SHAPE
+          ]
+        }
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -2.2396228742525342e-12
+        axis 0 1 0
+        anchor 0 0.045 -0.0176
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.045 -0.0176
+        rotation 2.8490012299968128e-11 -2.8489907650501717e-11 -1 1.5708
+        children [
+          Transform {
+            rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject Transform {
+          rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    DEF YELLOW_ROBOT_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "soccer/yellow_c2.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.075 0.075 0.075
+      }
+    }
+    Solid {
+      translation 0 0.0385 0.02
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor left"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "left sonar"
+    }
+    Solid {
+      translation 0 -0.0385 0.02
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor right"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "right sonar"
+    }
+    Solid {
+      translation 0.0385 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor front"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "front sonar"
+    }
+    Solid {
+      translation -0.0385 0 0.02
+      rotation 0 0 1 3.141592653589793
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+        DistanceSensor {
+          name "distancesensor back"
+          lookupTable [
+            0 0 0
+            1 1000 0.05
+          ]
+          type "sonar"
+        }
+      ]
+      name "back sonar"
+    }
+    Receiver {
+      name "supervisor receiver"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Receiver {
+      name "team receiver"
+      channel 3
+      allowedChannels [
+        3
+      ]
+    }
+    Receiver {
+      name "ball receiver"
+      type "infra-red"
+      channel 4
+      allowedChannels [
+        4
+      ]
+    }
+    Emitter {
+      name "team emitter"
+      range 10
+      channel 3
+      baudRate 115200
+      allowedChannels [
+        3
+      ]
+    }
+    GPS {
+    }
+    Compass {
+    }
+  ]
+  name "Y3"
+  boundingObject USE YELLOW_ROBOT_SHAPE
+  physics USE ROBOT_PHYSICS
+  controller "rsg_team_yellow"
+  controllerArgs [
+    ""
+  ]
+  synchronization FALSE
+}
 Robot {
   children [
     Emitter {
@@ -457,764 +2009,4 @@ Robot {
   ]
   controller "rsg_referee_supervisor"
   supervisor TRUE
-}
-DEF B1 Nao {
-  hidden translation_32 0.06901965283336288 -0.013027243849333278 -0.005016575898707437
-  hidden rotation_32 -5.927362382046505e-08 0.9999999999999948 -8.391141768981909e-08 0.9599999190617416
-  hidden translation_33 0.014013235244596358 -3.779988614782682e-06 -2.128200954250737e-06
-  hidden rotation_33 6.582136230317843e-09 0.9999999999999999 -2.1639857070951604e-08 0.9600000185952572
-  hidden translation_34 0.014000036406829425 9.573417059094425e-10 -1.0437174190885967e-08
-  hidden rotation_34 2.351528595254064e-11 1 -3.121987917226824e-11 0.9599999999489214
-  hidden translation_35 0.06901105359325414 0.013044469814389045 -0.005041873401820188
-  hidden rotation_35 1.208975522574416e-07 0.9999999999999916 4.8178115291930815e-08 0.9599999472781531
-  hidden translation_36 0.014024873673517265 1.6276194537562234e-06 -1.1095693519620886e-05
-  hidden rotation_36 2.591776442851211e-09 1 -4.846061316172246e-09 0.9600000005134248
-  hidden translation_37 0.01400047871849383 1.2095877943707478e-07 1.3420186353169106e-07
-  hidden rotation_37 6.462724640556492e-11 0.9999999999999999 1.1006285261380936e-10 0.9599999994491735
-  hidden translation_39 0.014007343137486004 -7.05462597686002e-06 -2.5821701804973197e-05
-  hidden rotation_39 4.056054215879795e-08 -0.9999999999999964 -7.245326403758983e-08 0.9600000129267534
-  hidden translation_44 0.06900974979961173 -0.013044334189497436 -0.005042771403514458
-  hidden rotation_44 -1.1920167552961484e-07 0.9999999999999917 -4.868531685137022e-08 0.9599999510681438
-  hidden translation_45 0.014024849206781452 -1.4144823210215927e-06 -1.1568649343635448e-05
-  hidden rotation_45 -2.3596697410486202e-09 1 4.87060020065506e-09 0.9600000004873923
-  hidden translation_46 0.014000573903523522 -1.4289695125790924e-07 1.6524556552960368e-07
-  hidden rotation_46 -7.414006049130713e-11 1 -1.1118658939552562e-10 0.9599999993964011
-  hidden translation_47 0.06901857158639715 0.013026956974270393 -0.005016263182792081
-  hidden rotation_47 5.8601074790911674e-08 0.9999999999999946 8.630611261215558e-08 0.9599999184602784
-  hidden translation_48 0.014012531667020942 3.9569384309989805e-06 -2.096681389416551e-06
-  hidden rotation_48 -6.142544088520342e-09 0.9999999999999998 2.084274081633974e-08 0.9600000179569387
-  hidden translation_49 0.014000036605743421 -1.3165402656944991e-09 -1.0495760573159263e-08
-  hidden rotation_49 -1.605255820113438e-11 1 3.0977412648338424e-11 0.95999999991091
-  hidden translation_51 0.014006820599552012 7.263624877032471e-06 -2.5646428730502375e-05
-  hidden rotation_51 -4.152136584671572e-08 -0.9999999999999963 7.484567964226806e-08 0.96000001401747
-  translation -1.34943 1.82023 0.334002
-  rotation -2.092699999990835e-06 -2.092699999990835e-06 0.9999999999956206 -1.5707953071795862
-  name "B1"
-  version "V4 (blue)"
-  customColor [
-    0.333333 0 1
-  ]
-  controller "rsg_team_blue"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/blue.png"
-    ]
-    jerseyColor 0.333333 0.333333 1
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF B2 Nao {
-  hidden translation_32 0.06909250383803756 -0.013017684813352554 -0.00503529763141361
-  hidden rotation_32 -6.010573253181742e-17 1 -1.7900496988665042e-16 0.9600000000663761
-  hidden translation_33 0.014022915541435296 -1.157266432286197e-05 -7.549034937812116e-06
-  hidden rotation_33 -4.808458603418034e-16 1 0 0.9599999998774148
-  hidden translation_34 0.01402361451128012 -8.994127836586818e-06 -1.2383966478596298e-05
-  hidden rotation_34 -1.2021146507778784e-16 1 1.2021146507778784e-16 0.9599999999437888
-  hidden translation_35 0.0690925050274763 0.01299965875261895 -0.0050189251408336065
-  hidden rotation_35 -6.010573253181759e-17 1 -5.879298893137526e-17 0.9600000000663732
-  hidden translation_36 0.014022915455865564 -1.157267061951961e-05 -7.549177500440485e-06
-  hidden rotation_36 -2.4042293017091375e-16 0.9999999999999999 1.2021146508545688e-16 0.9599999998773628
-  hidden translation_37 0.014023614547245378 -8.99412974128544e-06 -1.2384043757349139e-05
-  hidden rotation_37 0 1 -2.404229301555667e-16 0.9599999999438278
-  hidden translation_39 0.014026971775723148 5.127742865443374e-06 1.0225027737509329e-05
-  hidden rotation_39 1.2021146507515093e-16 -1 2.8111050850428684e-16 0.9599999999666285
-  hidden translation_44 0.06908971164021745 -0.012998582944136278 -0.005017118193966799
-  hidden rotation_44 6.010573253181759e-17 1 -3.3249044263728337e-16 0.9600000000663732
-  hidden translation_45 0.014022224935185484 1.1283533728270734e-05 -7.320005019614828e-06
-  hidden rotation_45 -1.202114650854511e-16 1 -1.202114650854511e-16 0.9599999998774134
-  hidden translation_46 0.014022908177009186 8.7664620050526e-06 -1.205952855753284e-05
-  hidden rotation_46 -1.2021146507778535e-16 1 4.808458603111414e-16 0.9599999999438109
-  hidden translation_47 0.06908987613999935 0.013017287939904337 -0.005034338082782058
-  hidden rotation_47 0 1 1.4835495904691105e-16 0.9600000000663684
-  hidden translation_48 0.014022225020236784 1.128352775289776e-05 -7.319864192029124e-06
-  hidden rotation_48 3.6063439525636037e-16 1 6.010573254272671e-17 0.9599999998773932
-  hidden translation_49 0.014022908142002577 8.766459910297675e-06 -1.2059452195067877e-05
-  hidden rotation_49 1.2021146507778713e-16 1 -2.4042293015557425e-16 0.959999999943795
-  hidden translation_51 0.014026216539792004 -4.996107755617096e-06 9.903106025693775e-06
-  hidden rotation_51 -2.4042293015029894e-16 -0.9999999999999999 -1.4034267465302457e-16 0.9599999999666415
-  translation -0.0394486 2.89023 0.334011
-  rotation -2.092699999990835e-06 -2.092699999990835e-06 0.9999999999956206 -1.5707953071795862
-  name "B2"
-  version "V4 (blue)"
-  customColor [
-    0.333333 0 1
-  ]
-  controller "rsg_team_blue"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/blue.png"
-    ]
-    jerseyColor 0.333333 0.333333 1
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF B3 Nao {
-  hidden translation_32 0.06900095363950859 -0.012999990451475277 -0.005000343045247407
-  hidden rotation_32 6.010573251792974e-17 1 1.4006375635877265e-17 0.9600000003069549
-  hidden translation_33 0.014000298429962948 6.46133563320106e-10 -1.3051707303812776e-07
-  hidden rotation_33 -1.2021146505915739e-16 1 -3.005286626478936e-16 0.9600000001051583
-  hidden translation_34 0.014000294131829571 -2.1367912439451686e-09 -1.2034315099995752e-07
-  hidden rotation_34 -3.726555417460351e-15 1 -1.7791296831746192e-14 0.9599999999301183
-  hidden translation_35 0.06900096017428314 0.013000009613931801 -0.005000343027894261
-  hidden rotation_35 6.01057325179324e-17 1 -2.2641546533127767e-16 0.9600000003069087
-  hidden translation_36 0.014000298429650254 6.46133632709045e-10 -1.3051685665566026e-07
-  hidden rotation_36 1.2021146505915036e-16 1 1.8031719758872558e-16 0.9600000001052189
-  hidden translation_37 0.014000294131651714 -2.1367912439451686e-09 -1.2034321744680554e-07
-  hidden rotation_37 -8.535014020634166e-15 0.9999999999999999 -1.6228547785712846e-14 0.9599999999302193
-  hidden translation_39 0.014000286599073486 2.867482737367588e-09 1.177584505462903e-07
-  hidden rotation_39 0 -1 2.1977161938715097e-16 0.9600000000248243
-  hidden translation_44 0.0690009540840798 -0.01299999046035484 -0.005000343044948036
-  hidden rotation_44 1.8031719755380002e-16 1 -2.702619278981967e-16 0.9600000003068928
-  hidden translation_45 0.014000298427240265 6.396866092384101e-10 -1.305151221542289e-07
-  hidden rotation_45 1.2021146505914713e-16 1 -2.4042293011829426e-16 0.9600000001052472
-  hidden translation_46 0.014000294130186552 -2.1396490551550684e-09 -1.2034370572289177e-07
-  hidden rotation_46 -1.0819031857141568e-14 1 -2.0435949063489627e-14 0.9599999999302515
-  hidden translation_47 0.06900096061409311 0.01300000960495791 -0.005000343015422071
-  hidden rotation_47 1.2021146503585781e-16 1 -2.9843014795223155e-17 0.9600000003069693
-  hidden translation_48 0.01400029842692771 6.396865537272589e-10 -1.3051490710402902e-07
-  hidden rotation_48 1.202114650591567e-16 0.9999999999999999 -6.010573252957835e-17 0.9600000001051641
-  hidden translation_49 0.014000294130008362 -2.1396490412772806e-09 -1.203437721697398e-07
-  hidden rotation_49 -7.45311083492017e-15 0.9999999999999999 -1.3463684088888048e-14 0.9599999999301929
-  hidden translation_51 0.014000286599030465 2.867599949163413e-09 1.177600261192957e-07
-  hidden rotation_51 -6.010573253421684e-17 -1 1.5121371525725874e-17 0.9600000000248103
-  translation -0.0394354 0.970234 0.334003
-  rotation -2.092699999990835e-06 -2.092699999990835e-06 0.9999999999956206 -1.5707953071795862
-  name "B3"
-  version "V4 (blue)"
-  customColor [
-    0.333333 0 1
-  ]
-  controller "rsg_team_blue"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/blue.png"
-    ]
-    jerseyColor 0.333333 0.333333 1
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF B4 Nao {
-  hidden translation_32 0.06900255944121392 -0.013000005783266683 -0.005000876565626172
-  hidden rotation_32 4.75436344296752e-14 1 3.617097242892156e-14 0.9600000001319106
-  hidden translation_33 0.014000779095837884 -7.408210989101605e-10 -3.334317283387733e-07
-  hidden rotation_33 1.7671085368564214e-14 1 3.0774135063622034e-14 0.9599999998183197
-  hidden translation_34 0.014000775208493965 9.171849668643262e-10 -3.2321648607558373e-07
-  hidden rotation_34 8.174379625536602e-15 1 6.611630579478137e-15 0.9599999999123232
-  hidden translation_35 0.06900255576662062 0.012999994224829364 -0.005000875786143361
-  hidden rotation_35 5.637917711129894e-14 1 3.742474044337532e-14 0.960000000131861
-  hidden translation_36 0.014000779095929533 -7.408211821768873e-10 -3.334318250947099e-07
-  hidden rotation_36 1.947425734494486e-14 1 1.8151931228930085e-14 0.9599999998185044
-  hidden translation_37 0.014000775208560412 9.171850362532652e-10 -3.232164759725542e-07
-  hidden rotation_37 -3.6063439524429085e-16 1 4.447824208012921e-15 0.95999999991224
-  hidden translation_39 0.014000764497068885 -1.4563932421163273e-09 3.272807530541044e-07
-  hidden rotation_39 -6.311101916545387e-15 -0.9999999999999999 9.729615454674136e-15 0.9599999999501364
-  hidden translation_44 0.06900255919877696 -0.013000005815823598 -0.0050008765264879795
-  hidden rotation_44 5.673981150645605e-14 1 3.727635441618942e-14 0.960000000132065
-  hidden translation_45 0.014000779096666416 -7.542574065322327e-10 -3.3343262162421894e-07
-  hidden rotation_45 1.4786010206349054e-14 1 1.7911508298748042e-14 0.9599999998183616
-  hidden translation_46 0.014000775209145833 9.127055639046588e-10 -3.2321642845500875e-07
-  hidden rotation_46 2.284017836547351e-15 0.9999999999999999 9.376494276352277e-15 0.9599999999121597
-  hidden translation_47 0.06900255551011336 0.0129999941923553 -0.005000875721347442
-  hidden rotation_47 3.90687261432158e-14 1 3.465001565033527e-14 0.9600000001320852
-  hidden translation_48 0.014000779096757371 -7.542573510210815e-10 -3.334327197679343e-07
-  hidden rotation_48 2.4763561809009173e-14 1 3.389963315602225e-14 0.9599999998182857
-  hidden translation_49 0.014000775209212668 9.127055777824467e-10 -3.2321641924015765e-07
-  hidden rotation_49 6.010573254071498e-16 1 7.453110835048657e-15 0.9599999999122429
-  hidden translation_51 0.014000764496999996 -1.4575659706972388e-09 3.272802334974845e-07
-  hidden rotation_51 -2.404229301540716e-15 -1 8.633155411880088e-15 0.9599999999503033
-  translation 1.40057 1.73024 0.334
-  rotation -2.092699999990835e-06 -2.092699999990835e-06 0.9999999999956206 -1.5707853071795865
-  name "B4"
-  version "V4 (blue)"
-  customColor [
-    0.333333 0 1
-  ]
-  controller "rsg_team_blue"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/blue.png"
-    ]
-    jerseyColor 0.333333 0.333333 1
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 2
-      allowedChannels [
-        2
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF Y1 Nao {
-  hidden translation_32 0.06900432357670522 -0.013003169622755384 -0.005001845355508683
-  hidden rotation_32 -1.758483363406401e-11 1 -1.221398300891717e-11 0.9600000003095668
-  hidden translation_33 0.014001509822575836 -1.6991825182999243e-07 -8.007095672751818e-07
-  hidden rotation_33 -6.246067514037554e-12 1 -8.121186052071678e-12 0.9599999999336578
-  hidden translation_34 0.01400144737625919 5.577947034263175e-07 -3.0570049158740176e-07
-  hidden rotation_34 -1.0850286838027318e-12 1 -2.153107551029331e-12 0.9599999999335987
-  hidden translation_35 0.06900261712173167 0.012998074575787555 -0.005001804234516155
-  hidden rotation_35 -1.7599379224856428e-11 1 -1.2240910386012873e-11 0.9600000001011307
-  hidden translation_36 0.01400150978050399 -1.69918764086896e-07 -8.006783746017376e-07
-  hidden rotation_36 -6.270710865049819e-12 1 -8.09822566310825e-12 0.9599999998222281
-  hidden translation_37 0.0140014473514187 5.577944472701102e-07 -3.0570877923574713e-07
-  hidden rotation_37 -1.0856297411479929e-12 1 -2.1396438669796396e-12 0.9599999999145452
-  hidden translation_39 0.014001038761399104 -7.503439861666905e-07 6.677286605721866e-07
-  hidden rotation_39 -2.4042293014773337e-16 -1 -1.9877817934168417e-16 0.9599999999777524
-  hidden translation_44 0.06905523591754134 -0.012987103910191089 -0.005010117654561469
-  hidden rotation_44 -3.2282187892612453e-11 0.9999999999999999 -2.4667805863393323e-11 0.959999999837419
-  hidden translation_45 0.01401661929759647 5.60968830494446e-06 -7.296219225766397e-06
-  hidden rotation_45 -1.184383459799895e-11 0.9999999999999999 -1.635969849557245e-11 0.9599999998374233
-  hidden translation_46 0.01401818338531971 1.5682141573103436e-06 -7.72021095627601e-06
-  hidden rotation_46 -1.8655617265163955e-12 1 -4.4603262001845696e-12 0.9599999999581839
-  hidden translation_47 0.06906235694022711 0.01301704390455749 -0.005020326713218531
-  hidden rotation_47 -3.2266259859421425e-11 1 -2.4707122514923182e-11 0.9600000002913427
-  hidden translation_48 0.01401661929548259 5.609686596574903e-06 -7.296123601445437e-06
-  hidden rotation_48 -1.1857658914962023e-11 1 -1.6378631799221446e-11 0.9599999999710955
-  hidden translation_49 0.01401818334554468 1.5682133031047485e-06 -7.720184398235519e-06
-  hidden rotation_49 -1.8771020271776322e-12 1 -4.469221848633369e-12 0.9599999999504591
-  hidden translation_51 0.014017850807746798 8.53224739860714e-07 8.61011455327576e-06
-  hidden rotation_51 -1.2021146507386932e-16 -1 7.85702251970393e-17 0.9599999999777293
-  translation -1.37943 -1.75977 0.334002
-  rotation 2.3655599999868697e-06 -2.346379999986976e-06 0.9999999999944493 1.57079
-  name "Y1"
-  customColor [
-    1 1 0
-  ]
-  controller "rsg_team_yellow"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/red.png"
-    ]
-    jerseyColor 1 1 0
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF Y2 Nao {
-  hidden translation_32 0.06900000165206355 -0.013000000003838552 -0.005000021156074536
-  hidden rotation_32 -1.7430662433498133e-15 1 7.259792249566047e-16 0.9600000001099182
-  hidden translation_33 0.01400001173480478 8.299472220585358e-13 -8.10381239890745e-09
-  hidden rotation_33 2.0435949065939633e-15 1 3.966978348094164e-15 0.959999999805423
-  hidden translation_34 0.0140000069557219 2.0000112677109882e-12 2.121427089551986e-09
-  hidden rotation_34 1.4425375809799846e-15 0.9999999999999999 -1.2021146508166531e-16 0.9599999999102037
-  hidden translation_35 0.06900000164859044 0.012999999996177014 -0.0050000211584785015
-  hidden rotation_35 6.611630578223139e-16 1 1.4475855230836211e-15 0.9600000001099639
-  hidden translation_36 0.014000011734811302 8.298917109073045e-13 -8.103811732773636e-09
-  hidden rotation_36 1.6829605113128008e-15 1 1.2021146509377149e-15 0.9599999998053456
-  hidden translation_37 0.01400000695572362 2.000039023286604e-12 2.1214293655091865e-09
-  hidden rotation_37 1.2021146508167253e-15 1 6.010573254083627e-16 0.9599999999101416
-  hidden translation_39 0.01400000049444361 -1.9600709944000982e-12 -6.6445931257153035e-09
-  hidden rotation_39 -5.409515928484513e-16 -1 4.81271413591869e-16 0.959999999946857
-  hidden translation_44 0.0690000016522927 -0.013000000004642243 -0.005000021156740975
-  hidden rotation_44 -3.0052866264650653e-16 1 1.619230238268006e-15 0.9600000001099633
-  hidden translation_45 0.014000011734943835 4.805045250577678e-13 -8.103865689612633e-09
-  hidden rotation_45 1.803171976406603e-15 1 3.3659210226256595e-15 0.9599999998053278
-  hidden translation_46 0.014000006955831534 1.8655077482776505e-12 2.121406939004089e-09
-  hidden rotation_46 8.414802555716846e-16 1 -7.212687904900151e-16 0.9599999999101699
-  hidden translation_47 0.06900000164849551 0.012999999995372824 -0.005000021158435175
-  hidden rotation_47 4.928670067402654e-15 1 1.0189359740324833e-15 0.9600000001099744
-  hidden translation_48 0.014000011734950163 4.805045250577678e-13 -8.103866577791052e-09
-  hidden rotation_48 -2.6446522320628942e-15 0.9999999999999999 -1.3223261160314471e-15 0.9599999998053763
-  hidden translation_49 0.014000006955833422 1.8655077482776505e-12 2.121409048427836e-09
-  hidden rotation_49 1.3223261158984669e-15 1 1.0819031857351094e-15 0.9599999999100873
-  hidden translation_51 0.014000000494538978 -1.960154261126945e-12 -6.64457877608271e-09
-  hidden rotation_51 0 -1 2.731024873725459e-16 0.9599999999469605
-  translation 0.0805505 -2.88977 0.333998
-  rotation 2.3655599999868697e-06 -2.346379999986976e-06 0.9999999999944493 1.57079
-  name "Y2"
-  customColor [
-    1 1 0
-  ]
-  controller "rsg_team_yellow"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/red.png"
-    ]
-    jerseyColor 1 1 0
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF Y3 Nao {
-  hidden rotation_32 0 1 -1.3741865814240747e-16 0.9600000000689813
-  hidden rotation_33 3.6063439523842734e-16 1 6.010573253973789e-17 0.9599999999291687
-  hidden rotation_34 -2.4042293015102055e-16 1 -2.4042293015102055e-16 0.9599999999635165
-  hidden rotation_35 6.010573253166549e-17 1 -2.5763233007553006e-16 0.9600000000690083
-  hidden rotation_36 1.2021146507948e-16 1 4.207401277781799e-16 0.9599999999291327
-  hidden rotation_37 4.808458603020415e-16 1 0 0.959999999963515
-  hidden rotation_44 -2.404229301266691e-16 1 2.6836665940242995e-16 0.960000000068977
-  hidden rotation_45 0 1 1.2021146507947622e-16 0.9599999999291648
-  hidden rotation_46 1.2021146507551198e-16 1 2.4042293015102395e-16 0.959999999963501
-  hidden rotation_47 -2.404229301266702e-16 1 2.683663011443474e-16 0.9600000000689727
-  hidden rotation_48 -2.404229301589505e-16 1 -6.010573253973762e-17 0.9599999999291735
-  hidden rotation_49 0 1 1.202114650755124e-16 0.9599999999634982
-  translation 1.40057 -1.74977 0.334005
-  rotation 2.3655599999868697e-06 -2.346379999986976e-06 0.9999999999944493 1.57079
-  name "Y3"
-  customColor [
-    1 1 0
-  ]
-  controller "rsg_team_yellow"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/red.png"
-    ]
-    jerseyColor 1 1 0
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-DEF Y4 Nao {
-  hidden translation_32 0.06954724647206134 -0.013054587162769082 -0.005177828964108594
-  hidden rotation_32 4.7551027427985386e-11 1 4.0843761844526355e-11 0.9600000002806074
-  hidden translation_33 0.014151522415096318 -4.779478924910041e-05 -4.6500354714831826e-05
-  hidden rotation_33 1.720670847367565e-11 1 2.6150621791016226e-11 0.9600000001352313
-  hidden translation_34 0.01415309397551924 -3.969088122951492e-05 -5.94075920399284e-05
-  hidden translation_35 0.06953929638541302 0.012978564187427988 -0.005073539241616631
-  hidden rotation_35 4.7402746585653226e-11 1 4.077656343243148e-11 0.9600000002851471
-  hidden translation_36 0.014151522294060082 -4.77948029037889e-05 -4.650059712067722e-05
-  hidden rotation_36 1.7199976631588385e-11 1 2.6073325818918497e-11 0.9600000001379034
-  hidden translation_37 0.0141530940401101 -3.969088805794163e-05 -5.940771113734089e-05
-  hidden translation_39 0.014153187489324481 2.4219990405693892e-05 7.437493313125487e-05
-  hidden rotation_39 -4.2428035538153755e-12 -0.9999999999999999 6.65621446896055e-12 0.9600000000352303
-  hidden translation_44 0.06949200705739325 -0.01298179083542933 -0.005096124245957484
-  hidden rotation_44 -2.6678109695785476e-11 1 -2.288949893250266e-11 0.9600000002872526
-  hidden translation_45 0.014145920243593263 2.530053854979397e-05 -4.83406560036273e-05
-  hidden rotation_45 -9.654062547139417e-12 1 -1.461146315456178e-11 0.9600000001371316
-  hidden translation_46 0.014146596672252945 2.0120610728951993e-05 -5.192808859585951e-05
-  hidden translation_47 0.06949759055190252 0.013027524896512988 -0.005150569526376186
-  hidden rotation_47 -2.6727576713713182e-11 1 -2.2905126541997568e-11 0.9600000002847398
-  hidden translation_48 0.014145920303808346 2.530053471272442e-05 -4.834052551263429e-05
-  hidden rotation_48 -9.656947622312476e-12 1 -1.4631237940581167e-11 0.9600000001358665
-  hidden translation_49 0.014146596636065725 2.0120608809987006e-05 -5.192802650713646e-05
-  hidden translation_51 0.01413982391804583 -1.1756384151961896e-05 7.185284212826715e-05
-  hidden rotation_51 2.3737556949488342e-12 -0.9999999999999999 -3.722416539857182e-12 0.9600000000357727
-  translation 0.000562575 -0.92977 0.334004
-  rotation 2.3655599999868697e-06 -2.346379999986976e-06 0.9999999999944493 1.57079
-  name "Y4"
-  customColor [
-    1 1 0
-  ]
-  controller "rsg_team_yellow"
-  cameraWidth 1
-  cameraHeight 1
-  jersey NaoJersey {
-    jerseyTexture [
-      "soccer/red.png"
-    ]
-    jerseyColor 1 1 0
-  }
-  bodySlot [
-    DistanceSensor {
-      translation 0.04 0 0
-      name "distance sensor front"
-    }
-    DistanceSensor {
-      translation -0.05 0 0
-      name "distance sensor back"
-    }
-    DistanceSensor {
-      translation 0 0.04 0
-      name "distance sensor left"
-    }
-    DistanceSensor {
-      translation 0 -0.04 0
-      name "distance sensor right"
-    }
-  ]
-  headSlot [
-    Receiver {
-      name "supervisor receiver"
-      channel 1
-      allowedChannels [
-        1
-      ]
-    }
-    Receiver {
-      name "ball receiver"
-      channel 4
-      allowedChannels [
-        4
-      ]
-    }
-    Receiver {
-      name "team receiver"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    Emitter {
-      name "team emitter"
-      channel 3
-      allowedChannels [
-        3
-      ]
-    }
-    GPS {
-    }
-    Compass {
-    }
-  ]
 }

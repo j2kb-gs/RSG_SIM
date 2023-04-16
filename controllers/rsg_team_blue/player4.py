@@ -17,10 +17,10 @@ class MyPlayer4(RSGPlayerRobot):
 
                 if self.is_new_ball_data():
                     ball_data = self.get_new_ball_data()
-                else:
-                    # if the robot can't see the ball, It stops
-                    self.currentlyPlaying.stop()
-                    continue
+                # else:
+                #     # if the robot can't see the ball, It stops
+                #     self.currentlyPlaying.stop()
+                #     continue
 
                 # get data from compass
                 heading = self.get_compass_heading()
@@ -38,7 +38,13 @@ class MyPlayer4(RSGPlayerRobot):
                 # rotate otherwise
 
                 if direction == 0:      # move forward
-                    self.startMotion(self.forwards)
+                    # self.startMotion(self.forwards)
+                    self.lHYP.setPosition(0.1)
+                    self.rHYP.setPosition(-0.1)
+                    self.lKP.setPosition(0.2)
+                    self.rKP.setPosition(0.2)
+                    self.lAP.setPosition(-0.1)
+                    self.rAP.setPosition(-0.1)
                 elif direction == 1:    # turn left
                     self.startMotion(self.turnLeft60)
                 else:                   # turn right right

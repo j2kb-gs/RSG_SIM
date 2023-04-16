@@ -127,7 +127,7 @@ class RCJSoccerSupervisor(Supervisor):
         Args:
             robot_name (str): The robot we set the velocity for
         """
-        self.robot_nodes[robot_name].setVelocity([0, 0, 0, 0, 0, 0, 0, 0])
+        self.robot_nodes[robot_name].setVelocity([0, 0, 0, 0, 0, 0])
 
     def reset_ball_velocity(self):
         """Reset the ball's velocity."""

@@ -37,7 +37,13 @@ class MyPlayer4(RSGPlayerRobot):
                 # If the robot has the ball right in front of it, go forward,
                 # rotate otherwise
                 if direction == 0:      # move forward
-                    self.startMotion(self.forwards)
+                    # self.startMotion(self.forwards)
+                    self.lHYP.setPosition(0.1)
+                    self.rHYP.setPosition(-0.1)
+                    self.lKP.setPosition(0.2)
+                    self.rKP.setPosition(0.2)
+                    self.lAP.setPosition(-0.1)
+                    self.rAP.setPosition(-0.1)
                 elif direction == 1:    # turn left
                     self.startMotion(self.turnLeft60)
                 else:                   # turn right right

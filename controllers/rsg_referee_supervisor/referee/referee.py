@@ -45,7 +45,7 @@ class RCJSoccerReferee:
         penalty_area_allowed_time: int,
         penalty_area_reset_after: int,
         post_goal_wait_time: int = 3,
-        initial_position_noise: float = 0.15 * 4,
+        initial_position_noise: float = 0.15,
     ):
         self.sv = supervisor
         self.match_time = match_time
