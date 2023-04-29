@@ -1,6 +1,6 @@
 import math
 import struct
-from controller import Motion
+from controller import Keyboard
 
 TIME_STEP = 32
 ROBOT_NAMES = ["B1", "B2", "B3", "Y1", "Y2", "Y3"]

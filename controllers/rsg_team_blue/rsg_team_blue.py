@@ -1,4 +1,4 @@
-from controller import Robot
+from controller import Robot, Keyboard
 from player1 import MyPlayer1
 from player2 import MyPlayer2
 from player3 import MyPlayer3
