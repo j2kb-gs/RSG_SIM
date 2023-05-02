@@ -1,0 +1,29 @@
+{"datetime": "2023-05-02T17:23:31.201401Z", "matchtime": 0, "event": "KICKOFF", "payload": {"robot_name": "B3", "team_name": "B"}}
+{"datetime": "2023-05-02T17:23:31.233859Z", "matchtime": 0, "event": "MATCH_START", "payload": {"score_yellow": 0, "score_blue": 0, "total_match_time": 600, "team_name_yellow": "Yellow Team", "team_name_blue": "Blue Team", "match_id": "1", "halftime": 1}}
+{"datetime": "2023-05-02T17:23:46.475239Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2023-05-02T17:23:46.476702Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2023-05-02T17:23:46.477777Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2023-05-02T17:23:46.478635Z", "matchtime": 15.04000000001838, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2023-05-02T17:23:53.883464Z", "matchtime": 22.336000000027298, "event": "LACK_OF_PROGRESS", "payload": {"type": "ball"}}
+{"datetime": "2023-05-02T17:23:59.280221Z", "matchtime": 27.64800000003379, "event": "GOAL", "payload": {"team_name": "Blue Team", "score_yellow": 0, "score_blue": 1}}
+{"datetime": "2023-05-02T17:24:02.345303Z", "matchtime": 30.656000000037466, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2023-05-02T17:24:06.488161Z", "matchtime": 34.75200000004247, "event": "GOAL", "payload": {"team_name": "Yellow Team", "score_yellow": 1, "score_blue": 1}}
+{"datetime": "2023-05-02T17:24:09.548947Z", "matchtime": 37.76000000004615, "event": "KICKOFF", "payload": {"robot_name": "B3", "team_name": "B"}}
+{"datetime": "2023-05-02T17:24:24.800954Z", "matchtime": 52.80000000006453, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2023-05-02T17:24:24.801828Z", "matchtime": 52.80000000006453, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2023-05-02T17:24:26.524370Z", "matchtime": 54.4960000000666, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2023-05-02T17:24:37.888388Z", "matchtime": 65.69600000008029, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2023-05-02T17:24:38.732514Z", "matchtime": 66.5280000000813, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2023-05-02T17:24:40.065251Z", "matchtime": 67.84000000008291, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2023-05-02T17:24:40.065836Z", "matchtime": 67.84000000008291, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2023-05-02T17:24:41.783645Z", "matchtime": 69.53600000008498, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2023-05-02T17:24:53.171287Z", "matchtime": 80.73600000009867, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B3"}}
+{"datetime": "2023-05-02T17:24:54.014171Z", "matchtime": 81.56800000009969, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y2"}}
+{"datetime": "2023-05-02T17:24:55.347197Z", "matchtime": 82.88000000010129, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B2"}}
+{"datetime": "2023-05-02T17:24:55.347938Z", "matchtime": 82.88000000010129, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "Y1"}}
+{"datetime": "2023-05-02T17:24:55.899845Z", "matchtime": 83.42400000010196, "event": "LACK_OF_PROGRESS", "payload": {"type": "ball"}}
+{"datetime": "2023-05-02T17:24:57.071004Z", "matchtime": 84.57600000010336, "event": "LACK_OF_PROGRESS", "payload": {"type": "robot", "robot_name": "B1"}}
+{"datetime": "2023-05-02T17:24:59.564131Z", "matchtime": 87.04000000010637, "event": "GOAL", "payload": {"team_name": "Blue Team", "score_yellow": 1, "score_blue": 2}}
+{"datetime": "2023-05-02T17:25:02.617380Z", "matchtime": 90.04800000010636, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2023-05-02T17:25:15.215695Z", "matchtime": 102.46400000009947, "event": "GOAL", "payload": {"team_name": "Blue Team", "score_yellow": 1, "score_blue": 3}}
+{"datetime": "2023-05-02T17:25:18.285306Z", "matchtime": 105.47200000009781, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
