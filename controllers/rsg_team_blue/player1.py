@@ -4,6 +4,7 @@ import math  # noqa: F401
 import utils
 import consts
 from rsg_player_robot import RSGPlayerRobot, TIME_STEP
+from controller import Keyboard
 
 """
 Player 1 has a defensive role: 
@@ -28,6 +29,8 @@ class MyPlayer1(RSGPlayerRobot):
         return -1 if robot_pos[0] < 0 else 1
 
     def run(self):
+        # self.keyboard = RSGPlayerRobot.getKeyboard()
+        # self.keyboard.enable(TIME_STEP * 10)
         while self.robot.step(TIME_STEP) != -1:
 
             if self.is_new_data():
@@ -42,6 +45,12 @@ class MyPlayer1(RSGPlayerRobot):
 
                 # Get data from sonars
                 sonar_values = self.get_sonar_values()  # noqa: F841
+
+                # while True:
+                #     key = self.keyboard.getKey()
+
+                #     if key == Keyboard.LEFT:
+                #         print("Yooooooooooo")
 
                 while self.is_new_team_data():
                     team_data = self.get_new_team_data()  # noqa: F841

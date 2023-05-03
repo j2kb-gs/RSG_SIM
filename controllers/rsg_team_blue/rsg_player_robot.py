@@ -1,6 +1,7 @@
 import math
 import struct
 from controller import Keyboard
+import random
 
 TIME_STEP = 32
 ROBOT_NAMES = ["B1", "B2", "B3", "Y1", "Y2", "Y3"]
@@ -47,6 +48,14 @@ class RSGPlayerRobot:
 
         self.left_motor.setVelocity(0.0)
         self.right_motor.setVelocity(0.0)
+
+        self.strategy = random.randint(1, 3)
+        if self.strategy == 1:
+            print("Team Blue is playing a Defensive Strategy")
+        elif self.strategy == 2:
+            print("Team Blue is playing an Offensive Strategy")
+        else:
+            print("Team Blue is playing a Collaborative Strategy")
 
     def parse_supervisor_msg(self, packet: str) -> dict:
         """Parse message received from supervisor
