@@ -65,7 +65,7 @@ class DrawMessageHandler(EventHandler):
     ) -> str:
         if type == "ball":
             return "Ball: Lack of progress."
-        return f"Robot {robot_name}: Determining position."
+        return f""
 
     def create_goal_msg(self, team_name: str, **kwargs) -> str:
         return f"A goal was scored by {team_name}."
