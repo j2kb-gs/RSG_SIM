@@ -1,7 +1,7 @@
 import math
 from typing import List, Tuple
 
-from controller import Supervisor
+from controller import Supervisor, Display
 
 from referee.consts import (
     BALL_DEPTH,
@@ -12,7 +12,7 @@ from referee.consts import (
     ROBOT_NAMES,
 )
 from referee.enums import LabelIDs, NeutralSpotDistanceType
-from referee.utils import time_to_string
+from referee.utils import (time_to_string, is_in_blue_goal, is_in_yellow_goal)
 
 
 class RCJSoccerSupervisor(Supervisor):
@@ -235,10 +235,10 @@ class RCJSoccerSupervisor(Supervisor):
         self.setLabel(
             LabelIDs.BLUE_TEAM.value,
             team_name_blue,
-            0.92 - (len(team_name_blue) * 0.01),  # X position
-            0.05,  # Y position
+            0.48 - (len(team_name_blue) * 0.01),  # X position
+            0.04,  # Y position
             0.1,  # Size
-            0x0000FF,  # Color
+            0x2377fc,  # Color
             0.0,  # Transparency
             "Tahoma",  # Font
         )
@@ -246,10 +246,10 @@ class RCJSoccerSupervisor(Supervisor):
         self.setLabel(
             LabelIDs.YELLOW_TEAM.value,
             team_name_yellow,
-            0.05,  # X position
-            0.05,  # Y position
+            0.15,  # X position
+            0.04,  # Y position
             0.1,  # Size
-            0xFFFF00,  # Color
+            0xf8fc7c,  # Color
             0.0,  # Transparency
             "Tahoma",  # Font
         )
@@ -265,10 +265,10 @@ class RCJSoccerSupervisor(Supervisor):
         self.setLabel(
             LabelIDs.BLUE_SCORE.value,
             str(blue),
-            0.92,  # X position
-            0.01,  # Y position
+            0.36,  # X position
+            0.04,  # Y position
             0.1,  # Size
-            0x0000FF,  # Color
+            0x2377fc,  # Color
             0.0,  # Transparency
             "Tahoma",  # Font
         )
@@ -276,10 +276,10 @@ class RCJSoccerSupervisor(Supervisor):
         self.setLabel(
             LabelIDs.YELLOW_SCORE.value,
             str(yellow),
-            0.05,  # X position
-            0.01,  # Y position
+            0.32,  # X position
+            0.04,  # Y position
             0.1,  # Size
-            0xFFFF00,  # Color
+            0xf8fc7c,  # Color
             0.0,  # Transparency
             "Tahoma",  # Font
         )
@@ -293,10 +293,10 @@ class RCJSoccerSupervisor(Supervisor):
         self.setLabel(
             LabelIDs.TIME.value,
             time_to_string(time),
-            0.45,
-            0.01,
+            0.05,
+            0.04,
             0.1,
-            0x000000,
+            0xffffff,
             0.0,
             "Arial",
         )
@@ -327,16 +327,35 @@ class RCJSoccerSupervisor(Supervisor):
                 no transparency and 1 meaning total transparency (the text will
                 not be visible).
         """
-        self.setLabel(
-            LabelIDs.GOAL.value,
-            "GOAL!",
-            0.30,
-            0.40,
-            0.4,
-            0xFF0000,
-            transparency,
-            "Verdana",
-        )
+        team_goal = None
+        team_kickoff = None
+
+        ball_translation = self.get_ball_translation()
+        ball_x, ball_y = ball_translation[0], ball_translation[1]
+        
+        if is_in_blue_goal(ball_x, ball_y):
+            self.setLabel(
+                LabelIDs.GOAL.value,
+                "GOAL!",
+                0.30,
+                0.40,
+                0.4,
+                0xf8fc7c,
+                transparency,
+                "Impact",
+            )
+        elif is_in_yellow_goal(ball_x, ball_y):
+             self.setLabel(
+                LabelIDs.GOAL.value,
+                "GOAL!",
+                0.30,
+                0.40,
+                0.4,
+                0x2377fc,
+                transparency,
+                "Impact",
+            )
+            
 
     def hide_goal_sign(self):
         """Hide the GOAL! once the game is again in progress."""
@@ -350,3 +369,4 @@ class RCJSoccerSupervisor(Supervisor):
             1.0,
             "Verdana",
         )
+        
