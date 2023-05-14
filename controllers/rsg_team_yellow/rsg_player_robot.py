@@ -24,6 +24,12 @@ class RSGPlayerRobot:
         self.ball_receiver = self.robot.getDevice("ball receiver")
         self.ball_receiver.enable(TIME_STEP)
 
+        if self.player_id == 1:
+            self.strategy_emitter = self.robot.getDevice("strategy emitter")
+        else:
+            self.strategy_receiver = self.robot.getDevice("strategy receiver")
+            self.strategy_receiver.enable(TIME_STEP)
+
         self.gps = self.robot.getDevice("gps")
         self.gps.enable(TIME_STEP)
 
@@ -83,7 +89,7 @@ class RSGPlayerRobot:
         """
         return self.receiver.getQueueLength() > 0
 
-    def parse_team_msg(self, packet: str) -> dict:
+    def parse_team_msg(self, packet: str, packet_desc: str) -> dict:
         """Parse message received from team robot
 
         Returns:
@@ -92,7 +98,7 @@ class RSGPlayerRobot:
         struct_fmt = "i"
         unpacked = struct.unpack(struct_fmt, packet)
         data = {
-            "robot_id": unpacked[0],
+            packet_desc: unpacked[0],
         }
         return data
 
@@ -104,7 +110,17 @@ class RSGPlayerRobot:
         """
         packet = self.team_receiver.getData()
         self.team_receiver.nextPacket()
-        return self.parse_team_msg(packet)
+        return self.parse_team_msg(packet, "robot_id")
+
+    def get_strategy_data(self) -> dict:
+        """Read new data from team robot
+
+        Returns:
+            dict: See `parse_team_msg` method
+        """
+        packet = self.strategy_receiver.getData()
+        self.strategy_receiver.nextPacket()
+        return self.parse_team_msg(packet, "strategy_id")
 
     def is_new_team_data(self) -> bool:
         """Check if there is new data from team robots to be received
@@ -124,6 +140,20 @@ class RSGPlayerRobot:
         data = [robot_id]
         packet = struct.pack(struct_fmt, *data)
         self.team_emitter.send(packet)
+
+    def send_strategy_to_team(self, strategy_id) -> None:
+        """Send strategy to the team
+
+        Args:
+            strategy (int): ID of the strategy
+            1 - defensive
+            2 - offensive
+            3 - collaborative
+        """
+        struct_fmt = "i"
+        data = [strategy_id]
+        packet = struct.pack(struct_fmt, *data)
+        self.strategy_emitter.send(packet)
 
     def get_new_ball_data(self) -> dict:
         """Read new data from IR sensor

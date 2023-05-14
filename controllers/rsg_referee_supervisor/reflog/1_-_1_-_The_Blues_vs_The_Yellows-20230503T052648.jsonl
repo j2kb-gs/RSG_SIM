@@ -1,0 +1,4 @@
+{"datetime": "2023-05-03T05:26:48.801858Z", "matchtime": 0, "event": "KICKOFF", "payload": {"robot_name": "Y3", "team_name": "Y"}}
+{"datetime": "2023-05-03T05:26:48.807313Z", "matchtime": 0, "event": "MATCH_START", "payload": {"score_yellow": 0, "score_blue": 0, "total_match_time": 600, "team_name_yellow": "The Yellows", "team_name_blue": "The Blues", "match_id": "1", "halftime": 1}}
+{"datetime": "2023-05-03T05:26:55.561015Z", "matchtime": 6.4640000000079, "event": "GOAL", "payload": {"team_name": "The Yellows", "score_yellow": 1, "score_blue": 0}}
+{"datetime": "2023-05-03T05:26:58.840446Z", "matchtime": 9.472000000011576, "event": "KICKOFF", "payload": {"robot_name": "B3", "team_name": "B"}}

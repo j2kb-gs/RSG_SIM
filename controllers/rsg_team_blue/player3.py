@@ -1,6 +1,7 @@
 # - ROBOT PLAYER 1
 
-import math  # noqa: F401
+import math
+import time  # noqa: F401
 import utils
 from rsg_player_robot import RSGPlayerRobot, TIME_STEP
 
@@ -22,9 +23,12 @@ Player 3 has a striker's role:
 
 class MyPlayer3(RSGPlayerRobot):
     def run(self):
+
         while self.robot.step(TIME_STEP) != -1:
 
             if self.is_new_data():
+                strategy = self.get_strategy_data()
+
                 data = self.get_new_data()  # noqa: F841
                 team_data = None
 
@@ -46,7 +50,12 @@ class MyPlayer3(RSGPlayerRobot):
                 else:
                     # robot does not see the ball
                     # robot try to position itself in opponents danger zone.
-                    if -.59 <= robot_pos[1]:
+
+                    strat_id = strategy["strategy_id"]
+                    offense_limit = -.2 if strat_id == 1 else -.59
+
+                    # goes less deep in offense zone when playing defensive
+                    if offense_limit <= robot_pos[1]:
                         if abs(heading) >= 2.4:
                             self.left_motor.setVelocity(1)
                             self.right_motor.setVelocity(1)
@@ -55,12 +64,12 @@ class MyPlayer3(RSGPlayerRobot):
                             self.left_motor.setVelocity(-1)
                             self.right_motor.setVelocity(-1)
                         else:
-                            # If robot facing its own gaal, rotate [scan for ball]
+                            # rotate [scan for ball]
                             self.left_motor.setVelocity(1)
                             self.right_motor.setVelocity(-1)
 
                     else:
-                        # If robot facing its own gaal, rotate [scan for ball]
+                        # rotate [scan for ball]
                         self.left_motor.setVelocity(1)
                         self.right_motor.setVelocity(-1)
 

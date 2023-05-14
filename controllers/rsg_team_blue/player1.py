@@ -4,7 +4,7 @@ import math  # noqa: F401
 import utils
 import consts
 from rsg_player_robot import RSGPlayerRobot, TIME_STEP
-from controller import Keyboard
+import random
 
 """
 Player 1 has a defensive role: 
@@ -22,18 +22,23 @@ Player 1 has a defensive role:
 
 
 class MyPlayer1(RSGPlayerRobot):
-
-    def back_dir(self, robot_pos):
-        if -.35 <= robot_pos[0] <= .35:
-            return 0
-        return -1 if robot_pos[0] < 0 else 1
-
     def run(self):
-        # self.keyboard = RSGPlayerRobot.getKeyboard()
-        # self.keyboard.enable(TIME_STEP * 10)
+
+        strategy = random.randint(1, 3)
+        if strategy == 1:
+            print("Team Blue is playing a Defensive Strategy")
+        elif strategy == 2:
+            print("Team Blue is playing an Offensive Strategy")
+        else:
+            print("Team Blue is playing a Collaborative Strategy")
+
         while self.robot.step(TIME_STEP) != -1:
 
+            # send strategy to be played to team members.
+            self.send_strategy_to_team(int(strategy))
+
             if self.is_new_data():
+                # self.send_strategy_to_team(int(strategy))
                 data = self.get_new_data()  # noqa: F841
                 team_data = None
 
@@ -46,12 +51,6 @@ class MyPlayer1(RSGPlayerRobot):
                 # Get data from sonars
                 sonar_values = self.get_sonar_values()  # noqa: F841
 
-                # while True:
-                #     key = self.keyboard.getKey()
-
-                #     if key == Keyboard.LEFT:
-                #         print("Yooooooooooo")
-
                 while self.is_new_team_data():
                     team_data = self.get_new_team_data()  # noqa: F841
                     # Do something with team data
@@ -61,6 +60,7 @@ class MyPlayer1(RSGPlayerRobot):
                 else:
                     # robot does not see the ball
                     # goes back to defense slowly
+
                     if robot_pos[1] <= 0.59:
                         if abs(heading) >= 2.4:
                             self.left_motor.setVelocity(-1)
@@ -70,12 +70,12 @@ class MyPlayer1(RSGPlayerRobot):
                             self.left_motor.setVelocity(1)
                             self.right_motor.setVelocity(1)
                         else:
-                            # If robot facing its own gaal, rotate [scan for ball]
+                            # rotate [scan for ball]
                             self.left_motor.setVelocity(1)
                             self.right_motor.setVelocity(-1)
 
                     else:
-                        # If robot facing its own gaal, rotate [scan for ball]
+                        # rotate [scan for ball]
                         self.left_motor.setVelocity(1)
                         self.right_motor.setVelocity(-1)
 

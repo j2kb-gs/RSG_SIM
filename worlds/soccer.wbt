@@ -456,7 +456,7 @@ DEF B1 Robot {
       ]
       endPoint Solid {
         translation 0 -0.045 -0.0176
-        rotation 2.938475997511402e-11 2.9117301253933925e-11 1 1.570800000000007
+        rotation 2.9383219056048753e-11 2.911955761207118e-11 1 1.5707999999999247
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -503,7 +503,7 @@ DEF B1 Robot {
       ]
       endPoint Solid {
         translation 0 0.045 -0.0176
-        rotation 2.994989242779519e-11 2.967987116175729e-11 1 1.570799693899582
+        rotation 2.994699514430054e-11 2.967995031228133e-11 1 1.5707996938994417
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -684,18 +684,30 @@ DEF B1 Robot {
         2
       ]
     }
+    Emitter {
+      name "strategy emitter"
+      channel 5
+      allowedChannels [
+        5
+      ]
+    }
     GPS {
     }
     Compass {
     }
   ]
   name "B1"
+  description "1"
   boundingObject USE BLUE_ROBOT_SHAPE
   physics DEF ROBOT_PHYSICS Physics {
     density -1
     mass 0.2
   }
+  recognitionColors [
+    0.6 0.9 0
+  ]
   controller "rsg_team_blue"
+  customData "1"
   synchronization FALSE
 }
 DEF B2 Robot {
@@ -718,7 +730,7 @@ DEF B2 Robot {
       ]
       endPoint Solid {
         translation 0 -0.045 -0.0176
-        rotation 2.6560228780052012e-11 2.664007139145965e-11 1 1.570799999999998
+        rotation 2.6558778606152246e-11 2.6639977448369374e-11 1 1.5707999999999043
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -764,8 +776,8 @@ DEF B2 Robot {
         }
       ]
       endPoint Solid {
-        translation 0 0.045 -0.0176
-        rotation 2.63643504703747e-11 2.6445699040751097e-11 1 1.570799693899573
+        translation 0 0.04499999999999993 -0.0176
+        rotation 8.140188572990063e-10 8.141030137877343e-10 1 1.5707996938994282
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -946,6 +958,13 @@ DEF B2 Robot {
         2
       ]
     }
+    Receiver {
+      name "strategy receiver"
+      channel 5
+      allowedChannels [
+        5
+      ]
+    }
     GPS {
     }
     Compass {
@@ -977,7 +996,7 @@ DEF B3 Robot {
       ]
       endPoint Solid {
         translation 0 -0.045 -0.0176
-        rotation -4.627246429606104e-13 -7.871354777761994e-13 1 1.5707999999999962
+        rotation -4.671366674194662e-13 -7.863847252285842e-13 1 1.5707999999999005
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1024,7 +1043,7 @@ DEF B3 Robot {
       ]
       endPoint Solid {
         translation 0 0.045 -0.0176
-        rotation -3.1682095048565246e-13 -6.285685153142202e-13 1 1.5707996938995714
+        rotation -3.1897632754771005e-13 -6.28664769314595e-13 1 1.5707996938994384
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1205,6 +1224,13 @@ DEF B3 Robot {
         2
       ]
     }
+    Receiver {
+      name "strategy receiver"
+      channel 5
+      allowedChannels [
+        5
+      ]
+    }
     GPS {
     }
     Compass {
@@ -1235,8 +1261,8 @@ DEF Y1 Robot {
         }
       ]
       endPoint Solid {
-        translation 0 -0.04499999999999993 -0.0176
-        rotation -5.557574800223677e-10 5.557554386149054e-10 -1 1.5708
+        translation 2.051931070215886e-15 -0.044999999999998846 -0.0176
+        rotation -8.542964768220553e-09 8.5429331061151e-09 -0.9999999999999999 1.5707999999999127
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1282,8 +1308,8 @@ DEF Y1 Robot {
         }
       ]
       endPoint Solid {
-        translation 2.220446049250313e-16 0.044999999999999984 -0.0176
-        rotation -5.526332788296617e-10 5.526312488980106e-10 -1 1.5708
+        translation -2.3320754908946983e-15 0.04499999999999876 -0.0176
+        rotation -8.513163559112662e-09 8.51312720670971e-09 -1 1.5707999999999134
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1464,6 +1490,13 @@ DEF Y1 Robot {
         3
       ]
     }
+    Emitter {
+      name "strategy emitter"
+      channel 6
+      allowedChannels [
+        6
+      ]
+    }
     GPS {
     }
     Compass {
@@ -1494,8 +1527,8 @@ DEF Y2 Robot {
         }
       ]
       endPoint Solid {
-        translation 5.551115123125783e-17 -0.04499999999999993 -0.0176
-        rotation -5.812166889066264e-10 5.812145539824399e-10 -1 1.5708
+        translation 1.832774807859343e-15 -0.04499999999999871 -0.0176
+        rotation -9.073331746804393e-09 9.073302786573191e-09 -0.9999999999999999 1.5707999999999196
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1541,8 +1574,8 @@ DEF Y2 Robot {
         }
       ]
       endPoint Solid {
-        translation 4.440892098500626e-16 0.04500000000000004 -0.0176
-        rotation -5.833682093348937e-10 5.833660665077455e-10 -1 1.5708
+        translation -1.497598334725428e-15 0.044999999999999346 -0.0176
+        rotation -9.097081310377662e-09 9.097047678850635e-09 -0.9999999999999999 1.570799999999905
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1723,6 +1756,13 @@ DEF Y2 Robot {
         3
       ]
     }
+    Receiver {
+      name "strategy receiver"
+      channel 6
+      allowedChannels [
+        6
+      ]
+    }
     GPS {
     }
     Compass {
@@ -1753,8 +1793,8 @@ DEF Y3 Robot {
         }
       ]
       endPoint Solid {
-        translation 5.551115123125783e-17 -0.045 -0.0176
-        rotation 7.272773643605522e-11 -7.272746929265314e-11 -1 1.5708
+        translation 6.921168694955878e-16 -0.0449999999999999 -0.0176
+        rotation 8.763236126571179e-10 -8.763095695880206e-10 -1 1.57079999999991
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1801,7 +1841,7 @@ DEF Y3 Robot {
       ]
       endPoint Solid {
         translation 0 0.045 -0.0176
-        rotation 2.8490012299968128e-11 -2.8489907650501717e-11 -1 1.5708
+        rotation 1.8414523170588148e-10 -1.8414310797166574e-10 -1 1.5707999999998927
         children [
           Transform {
             rotation -0.5771969549958951 0.5776567755050862 -0.5771969549958951 2.0939354039397986
@@ -1980,6 +2020,13 @@ DEF Y3 Robot {
       baudRate 115200
       allowedChannels [
         3
+      ]
+    }
+    Receiver {
+      name "strategy receiver"
+      channel 6
+      allowedChannels [
+        6
       ]
     }
     GPS {

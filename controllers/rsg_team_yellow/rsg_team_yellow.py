@@ -2,7 +2,7 @@ from controller import Robot
 from player1 import MyPlayer1
 from player2 import MyPlayer2
 from player3 import MyPlayer3
-from player4 import MyPlayer4
+
 
 robot = Robot()
 name = robot.getName()
